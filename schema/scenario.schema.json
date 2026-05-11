@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AI Agent Training Scenario",
+  "type": "object",
+  "required": ["scenario_id", "title", "description", "personas", "environment", "task", "success_criteria"],
+  "properties": {
+    "scenario_id": { "type": "string", "pattern": "^[a-z0-9_-]+$" },
+    "title": { "type": "string", "minLength": 5, "maxLength": 120 },
+    "description": { "type": "string", "minLength": 20 },
+    "personas": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "role"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "role": { "type": "string" }
+        }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "required": ["tools"],
+      "properties": {
+        "tools": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "context": { "type": "string" }
+      }
+    },
+    "task": {
+      "type": "object",
+      "required": ["goal", "steps"],
+      "properties": {
+        "goal": { "type": "string", "minLength": 10 },
+        "steps": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["step", "action"],
+            "properties": {
+              "step": { "type": "integer", "minimum": 1 },
+              "action": { "type": "string" },
+              "uses_tool": { "type": "string" },
+              "actor_persona": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "success_criteria": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
