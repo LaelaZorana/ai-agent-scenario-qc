@@ -1,0 +1,29 @@
+{
+  "scenario_id": "good_email_triage",
+  "title": "Triage and respond to a customer escalation email",
+  "description": "The agent must read an inbound customer email expressing frustration about a delayed shipment, identify the order in the customer database, draft an empathetic reply with a concrete resolution, and CC the relevant support manager.",
+  "personas": [
+    { "id": "agent",       "name": "Support Agent", "role": "Tier-2 customer support" },
+    { "id": "customer",    "name": "Priya Shah",     "role": "Affected customer" },
+    { "id": "manager_1",   "name": "Daniel Cruz",    "role": "Support Team Manager" }
+  ],
+  "environment": {
+    "tools": ["gmail.read_inbox", "gmail.send_email", "crm.lookup_order", "crm.add_note"],
+    "context": "Inbox has 3 unread emails; customer's most recent order id is ORD-48921."
+  },
+  "task": {
+    "goal": "Resolve the customer's complaint within one email exchange and document the action in CRM.",
+    "steps": [
+      { "step": 1, "action": "Read inbound email from customer",     "uses_tool": "gmail.read_inbox",  "actor_persona": "agent" },
+      { "step": 2, "action": "Look up order ORD-48921 in the CRM",   "uses_tool": "crm.lookup_order",  "actor_persona": "agent" },
+      { "step": 3, "action": "Draft and send an empathetic reply that includes the new ETA, CC manager_1", "uses_tool": "gmail.send_email", "actor_persona": "agent" },
+      { "step": 4, "action": "Log the resolution as a CRM note",     "uses_tool": "crm.add_note",      "actor_persona": "agent" }
+    ]
+  },
+  "success_criteria": [
+    "Reply email is sent to the customer and CCs manager_1",
+    "Reply email references order ORD-48921 specifically",
+    "A CRM note is added to ORD-48921 with the resolution details",
+    "Tone of reply is empathetic and not templated"
+  ]
+}
