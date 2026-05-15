@@ -1,0 +1,21 @@
+{
+  "scenario_id": "bad_calendar_booking",
+  "title": "Book a meeting with the manager",
+  "description": "The agent should find a free slot and book a meeting.",
+  "personas": [
+    { "id": "agent",      "name": "Assistant",    "role": "Scheduling assistant" },
+    { "id": "manager_1",  "name": "Sara Lee",     "role": "Manager" }
+  ],
+  "environment": {
+    "tools": ["calendar.read_availability"]
+  },
+  "task": {
+    "goal": "Schedule a 30-minute meeting next week between the user and the manager.",
+    "steps": [
+      { "step": 1, "action": "Check the user's availability",      "uses_tool": "calendar.read_availability", "actor_persona": "agent" },
+      { "step": 2, "action": "Check manager_2's availability",     "uses_tool": "calendar.read_availability", "actor_persona": "manager_2" },
+      { "step": 3, "action": "Create the calendar event",          "uses_tool": "calendar.create_event",      "actor_persona": "agent" }
+    ]
+  },
+  "success_criteria": []
+}
