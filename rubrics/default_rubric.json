@@ -1,0 +1,15 @@
+{
+  "name": "default",
+  "version": "1.0",
+  "criteria": [
+    { "id": "logical_consistency", "label": "Logical consistency across steps", "weight": 20, "max": 10 },
+    { "id": "factual_accuracy",    "label": "Factual accuracy of references", "weight": 15, "max": 10 },
+    { "id": "completeness",        "label": "All required fields populated",  "weight": 15, "max": 10 },
+    { "id": "task_clarity",        "label": "Task goal is clear and specific","weight": 10, "max": 10 },
+    { "id": "environment_realism", "label": "Tools and context are plausible","weight": 10, "max": 10 },
+    { "id": "success_criteria",    "label": "Measurable success criteria",    "weight": 10, "max": 10 },
+    { "id": "ambiguity",           "label": "Low ambiguity (penalized)",      "weight": 10, "max": 10 },
+    { "id": "token_efficiency",    "label": "Concise without bloat",          "weight": 10, "max": 10 }
+  ],
+  "pass_threshold": 75
+}
