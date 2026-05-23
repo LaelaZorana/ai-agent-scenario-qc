@@ -1,0 +1,20 @@
+{
+  "scenario_id": "bad_invalid_step_order",
+  "title": "Summarize a Slack thread and archive it",
+  "description": "Agent reads a Slack thread, summarizes the discussion, posts the summary in a dedicated channel, then archives the original.",
+  "personas": [
+    { "id": "agent", "name": "ChatBot", "role": "Automation agent" }
+  ],
+  "environment": {
+    "tools": ["slack.read_thread", "slack.post_message", "slack.archive_thread", "drive.unused_tool"]
+  },
+  "task": {
+    "goal": "Summarize the thread and archive it.",
+    "steps": [
+      { "step": 1, "action": "Read the Slack thread",                       "uses_tool": "slack.read_thread",     "actor_persona": "agent" },
+      { "step": 3, "action": "Post summary to #digest channel",             "uses_tool": "slack.post_message",    "actor_persona": "agent" },
+      { "step": 4, "action": "Archive the original thread",                 "uses_tool": "slack.archive_thread",  "actor_persona": "agent" }
+    ]
+  },
+  "success_criteria": ["ok", "Summary is concise and accurate"]
+}
