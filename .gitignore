@@ -3,3 +3,8 @@ __pycache__/
 .venv/
 .pytest_cache/
 .DS_Store
+
+# Generated reports (sample report is committed explicitly)
+reports/*.md
+reports/*.json
+!reports/sample_*.md
