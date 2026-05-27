@@ -92,3 +92,7 @@ If you want to understand the code, I'd read in this order:
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+---
+
+**Links:** [GitHub](https://github.com/LaelaZorana) · [HuggingFace](https://huggingface.co/LaelaZ) · [Kaggle](https://www.kaggle.com/laelazorana)
