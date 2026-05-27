@@ -22,6 +22,9 @@ def detect_defects(scenario: dict[str, Any]) -> list[dict[str, str]]:
     declared_tools = set(env.get("tools", []) or [])
 
     task = scenario.get("task", {}) or {}
+    # task may be a plain string description rather than a structured dict
+    if isinstance(task, str):
+        task = {}
     steps = task.get("steps", []) or []
 
     # Rule: every uses_tool must be declared
