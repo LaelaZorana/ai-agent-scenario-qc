@@ -1,5 +1,7 @@
 # ai-agent-scenario-qc
 
+**🔗 Live demo:** [try it on Hugging Face Spaces](https://huggingface.co/spaces/LaelaZ/ai-agent-scenario-qc) — paste a scenario, get the QC report in your browser, no install.
+
 A small Python toolkit I built to **QC the kind of JSON scenarios that get used to train AI agents** — the ones where an agent is given a persona, a simulated environment (Gmail, Slack, Drive, a fake CRM), and a multi-step task with expected outcomes.
 
 If you've ever looked at one of those scenarios, you know how easy it is for them to break in subtle ways: a step references a tool that wasn't declared, a persona is mentioned but never defined, success criteria are empty, JSON is technically valid but semantically broken. This catches those things.
