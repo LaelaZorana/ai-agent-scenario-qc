@@ -7,7 +7,7 @@ from typing import Any
 
 from jsonschema import Draft7Validator
 
-SCHEMA_PATH = Path(__file__).resolve().parent.parent / "schema" / "scenario.schema.json"
+SCHEMA_PATH = Path(__file__).resolve().parent / "data" / "scenario.schema.json"
 
 
 def load_schema() -> dict[str, Any]:
