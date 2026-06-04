@@ -1,18 +1,18 @@
 # ai-agent-scenario-qc
 
-**🔗 Live demo:** [try it on Hugging Face Spaces](https://huggingface.co/spaces/LaelaZ/ai-agent-scenario-qc) — paste a scenario, get the QC report in your browser, no install.
+**🔗 Live demo:** [try it on Hugging Face Spaces](https://huggingface.co/spaces/LaelaZ/ai-agent-scenario-qc). Paste a scenario, get the QC report in your browser, no install.
 
-A small Python toolkit I built to **QC the kind of JSON scenarios that get used to train AI agents** — the ones where an agent is given a persona, a simulated environment (Gmail, Slack, Drive, a fake CRM), and a multi-step task with expected outcomes.
+A small Python toolkit I built to **QC the kind of JSON scenarios that get used to train AI agents**, the ones where an agent is given a persona, a simulated environment (Gmail, Slack, Drive, a fake CRM), and a multi-step task with expected outcomes.
 
 If you've ever looked at one of those scenarios, you know how easy it is for them to break in subtle ways: a step references a tool that wasn't declared, a persona is mentioned but never defined, success criteria are empty, JSON is technically valid but semantically broken. This catches those things.
 
 ## Why I built this
 
-I'm coming from a quality-assurance and training background (LMS / SCORM testing, compliance content review) and I picked up the *AI Agents and Agentic AI Architecture in Python* course at Vanderbilt at the end of 2025. After working through the course, the thing that struck me was how much of the work of building good agents was actually *reviewing scenarios* — making sure the tasks, environments, and tools all hang together logically before you ever feed them to a model.
+I'm coming from a quality-assurance and training background (LMS / SCORM testing, compliance content review) and I picked up the *AI Agents and Agentic AI Architecture in Python* course at Vanderbilt at the end of 2025. After working through the course, the thing that struck me was how much of the work of building good agents was actually *reviewing scenarios*: making sure the tasks, environments, and tools all hang together logically before you ever feed them to a model.
 
 That's basically QA. So I wrote my own little reviewer to practice the workflow.
 
-The first version was just a JSON-schema validator. Then I kept finding scenarios in my own notes where the schema passed but the scenario was still broken (a step using a tool that wasn't declared, for example), so I started adding semantic rules. The rubric scoring came last — I wanted a single number I could compare scenarios on.
+The first version was just a JSON-schema validator. Then I kept finding scenarios in my own notes where the schema passed but the scenario was still broken (a step using a tool that wasn't declared, for example), so I started adding semantic rules. The rubric scoring came last, because I wanted a single number I could compare scenarios on.
 
 ## What it does
 
@@ -57,7 +57,7 @@ A full sample report lives in [`reports/sample_bad_calendar_booking_review.md`](
 
 ## Rubric
 
-The default rubric is in [`rubrics/default_rubric.json`](rubrics/default_rubric.json) — 8 weighted criteria, each scored 0–10. The overall score is the weighted sum out of 100; the pass threshold is 75.
+The default rubric is in [`rubrics/default_rubric.json`](rubrics/default_rubric.json): 8 weighted criteria, each scored 0–10. The overall score is the weighted sum out of 100, and the pass threshold is 75.
 
 You can drop a custom rubric in `rubrics/` and pass `--rubric path/to/yours.json`.
 
@@ -79,17 +79,17 @@ tests/                   pytest suite
 
 ## What's still rough
 
-There's a real list in [TODO.md](TODO.md). The big one: a CRITICAL defect should arguably force a `FAIL` verdict regardless of weighted score — right now a scenario with 1 critical defect can still pass if everything else is perfect. I went back and forth on this; for now I left it weighted, but I'd probably change my mind in v2.
+There's a real list in [TODO.md](TODO.md). The big one: a CRITICAL defect should arguably force a `FAIL` verdict regardless of weighted score, because right now a scenario with 1 critical defect can still pass if everything else is perfect. I went back and forth on this; for now I left it weighted, but I'd probably change my mind in v2.
 
 ## Reading order
 
 If you want to understand the code, I'd read in this order:
-1. `schema/scenario.schema.json` — what a "good" scenario looks like
-2. `scenarios/good_email_triage.json` — a concrete example
-3. `qc_reviewer/validator.py` — easy, just JSON-schema wrap
-4. `qc_reviewer/defect_detector.py` — the actual semantic logic
-5. `qc_reviewer/rubric.py` — how scores get computed
-6. `qc_reviewer/report.py` — output formatting
+1. `schema/scenario.schema.json`: what a "good" scenario looks like
+2. `scenarios/good_email_triage.json`: a concrete example
+3. `qc_reviewer/validator.py`: easy, just JSON-schema wrap
+4. `qc_reviewer/defect_detector.py`: the actual semantic logic
+5. `qc_reviewer/rubric.py`: how scores get computed
+6. `qc_reviewer/report.py`: output formatting
 
 ## License
 
