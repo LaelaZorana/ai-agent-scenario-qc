@@ -9,9 +9,9 @@ Things I want to add when I get back to this:
 - [ ] Detect contradictions across success_criteria (e.g. "must CC manager" + "must not CC anyone")
 - [ ] Per-rule enable/disable via CLI flag or config file
 - [ ] HTML report output (Markdown is fine for me but pretty for sharing)
-- [ ] Better token estimator — the current `len(text) // 4` is a rough heuristic. Maybe use tiktoken?
+- [ ] Better token estimator, the current `len(text) // 4` is a rough heuristic. Maybe use tiktoken?
 - [ ] CI: GitHub Actions to run pytest on push
 
 Lower priority:
 - [ ] Allow rubric weights to be expressed as ratios (e.g. 2:1:1) instead of percentages
-- [ ] Cache schema loading (currently re-reads from disk on every review — fine for now)
+- [ ] Cache schema loading (currently re-reads from disk on every review, fine for now)

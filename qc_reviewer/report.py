@@ -1,4 +1,4 @@
-"""Report writers — Markdown for humans, JSON for pipelines."""
+"""Report writers: Markdown for humans, JSON for pipelines."""
 from __future__ import annotations
 
 import json
@@ -16,12 +16,12 @@ def _sort_defects(defects: list[dict[str, str]]) -> list[dict[str, str]]:
 def build_markdown(scenario_path: str, scenario_id: str,
                    defects: list[dict[str, str]], score: dict[str, Any]) -> str:
     lines: list[str] = []
-    lines.append(f"# QC Review Report — `{scenario_id}`")
+    lines.append(f"# QC Review Report: `{scenario_id}`")
     lines.append("")
     lines.append(f"**Source:** `{scenario_path}`")
     lines.append("")
-    verdict = "PASS" if score["passed"] else "FAIL — needs revision"
-    lines.append(f"**Overall score:** {score['overall_score']} / 100 — **{verdict}**")
+    verdict = "PASS" if score["passed"] else "FAIL, needs revision"
+    lines.append(f"**Overall score:** {score['overall_score']} / 100, **{verdict}**")
     lines.append(f"**Defects found:** {len(defects)}")
     lines.append("")
     lines.append("## Rubric breakdown")
@@ -39,7 +39,7 @@ def build_markdown(scenario_path: str, scenario_id: str,
         lines.append("_No defects detected._")
     else:
         for d in _sort_defects(defects):
-            lines.append(f"- **[{d['severity']}]** `{d['location']}` — {d['message']}")
+            lines.append(f"- **[{d['severity']}]** `{d['location']}`: {d['message']}")
     lines.append("")
     lines.append("## Recommended actions")
     lines.append("")

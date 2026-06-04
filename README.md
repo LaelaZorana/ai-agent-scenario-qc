@@ -48,9 +48,9 @@ Example output (truncated):
 ```
 PASS  good_email_triage          100.0/100  defects=0
 FAIL  bad_calendar_booking        62.0/100  defects=3
-  [CRITICAL] task.steps[3].uses_tool — Tool 'calendar.create_event' not in environment.tools
-  [HIGH]     task.steps[2].actor_persona — Persona 'manager_2' not defined
-  [MEDIUM]   success_criteria — empty
+  [CRITICAL] task.steps[3].uses_tool: Tool 'calendar.create_event' not in environment.tools
+  [HIGH]     task.steps[2].actor_persona: Persona 'manager_2' not defined
+  [MEDIUM]   success_criteria: empty
 ```
 
 A full sample report lives in [`reports/sample_bad_calendar_booking_review.md`](reports/sample_bad_calendar_booking_review.md).

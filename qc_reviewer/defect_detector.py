@@ -1,10 +1,10 @@
-"""Semantic defect detection — beyond schema, catches logical issues."""
+"""Semantic defect detection: beyond schema, catches logical issues."""
 from __future__ import annotations
 
 from typing import Any
 
 TOKEN_SOFT_LIMIT = 1500  # rough heuristic: 1 token ~= 4 chars
-# TODO: replace with tiktoken once I'm ready to add the dep — see TODO.md
+# TODO: replace with tiktoken once I'm ready to add the dep, see TODO.md
 
 
 def _approx_tokens(text: str) -> int:
@@ -72,7 +72,7 @@ def detect_defects(scenario: dict[str, Any]) -> list[dict[str, str]]:
             "severity": "MEDIUM",
             "category": "success_criteria",
             "location": "success_criteria",
-            "message": "success_criteria is empty — scenario has no measurable outcome",
+            "message": "success_criteria is empty. Scenario has no measurable outcome",
         })
     else:
         trivial = [c for c in criteria if isinstance(c, str) and len(c.strip()) < 10]
