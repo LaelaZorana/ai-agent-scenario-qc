@@ -297,7 +297,7 @@ with gr.Blocks(title="AI Agent Scenario QC Reviewer", theme=theme, css=CSS) as d
     gr.HTML(
         '<div id="qc-head"><span class="qc-pill">AI TRAINING-DATA QC</span>'
         "<h1>AI Agent Scenario QC Reviewer</h1>"
-        "<p>Catch the defects that quietly break agent-training data before it reaches a "
+        "<p>Catch the defects that break agent-training data before it reaches a "
         "labeling team. Paste a scenario with personas, a tool environment, and multi-step "
         "tasks, then read a weighted rubric score plus a severity-tagged defect log: "
         "undeclared tools, undefined personas, out-of-order steps, empty success criteria, "
