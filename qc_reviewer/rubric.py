@@ -1,4 +1,4 @@
-"""Rubric engine — weighted scoring across QC criteria."""
+"""Rubric engine: weighted scoring across QC criteria."""
 from __future__ import annotations
 
 import json
