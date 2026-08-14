@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-DEFAULT_RUBRIC = Path(__file__).resolve().parent.parent / "rubrics" / "default_rubric.json"
+DEFAULT_RUBRIC = Path(__file__).resolve().parent / "data" / "default_rubric.json"
 
 # Severity → score-penalty mapping (per defect, capped at criterion max)
 SEVERITY_PENALTY = {

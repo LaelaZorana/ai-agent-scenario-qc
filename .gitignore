@@ -4,6 +4,11 @@ __pycache__/
 .pytest_cache/
 .DS_Store
 
+# build artifacts
+build/
+dist/
+*.egg-info/
+
 # Generated reports (sample report is committed explicitly)
 reports/*.md
 reports/*.json

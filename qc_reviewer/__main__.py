@@ -32,7 +32,7 @@ def review_one(path: Path, rubric_path: Path | None, out_dir: Path) -> bool:
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="qc_reviewer", description="AI agent scenario QC reviewer")
+    parser = argparse.ArgumentParser(prog="scenario-qc", description="AI agent scenario QC reviewer")
     sub = parser.add_subparsers(dest="cmd", required=True)
 
     p_rev = sub.add_parser("review", help="Review a single scenario file")

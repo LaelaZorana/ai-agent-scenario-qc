@@ -6,6 +6,21 @@
 - More semantic rules: cyclic step dependencies, contradictory success criteria
 - Per-rule enable/disable via config
 
+## 0.4.0: 2026-05-31
+
+- Packaged for PyPI: added `pyproject.toml`, so the project installs with
+  `pip install ai-agent-scenario-qc` instead of a manual clone.
+- Moved the default schema and rubric inside the package (`qc_reviewer/data/`)
+  and ship them as package data, so the validator and rubric work after a plain
+  pip install (previously they loaded from the repo root and broke once
+  installed). Behavior and contents are unchanged.
+- Public API: the key functions are now re-exported from the top level, so you
+  can write `from qc_reviewer import load_scenario, detect_defects, score_scenario`.
+- Console entry point: the CLI is now available as the `scenario-qc` command,
+  alongside the existing `python -m qc_reviewer`.
+- Continuous integration: GitHub Actions runs the test suite on Python 3.9
+  through 3.12.
+
 ## 0.3.0: 2026-05-25
 
 - Added token-bloat heuristic (`description` length check)
