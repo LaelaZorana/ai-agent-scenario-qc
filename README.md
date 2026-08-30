@@ -1,8 +1,6 @@
 # ai-agent-scenario-qc
 
 [![CI](https://github.com/LaelaZorana/ai-agent-scenario-qc/actions/workflows/ci.yml/badge.svg)](https://github.com/LaelaZorana/ai-agent-scenario-qc/actions/workflows/ci.yml)
-[![PyPI](https://img.shields.io/pypi/v/ai-agent-scenario-qc.svg)](https://pypi.org/project/ai-agent-scenario-qc/)
-[![Python](https://img.shields.io/pypi/pyversions/ai-agent-scenario-qc.svg)](https://pypi.org/project/ai-agent-scenario-qc/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Quality control for the JSON scenarios used to train AI agents. These are the files where an agent gets a persona, a simulated environment (Gmail, Slack, Drive, a fake CRM), and a multi-step task with expected outcomes. They break in subtle ways: a step references a tool that was never declared, a persona is mentioned but never defined, the success criteria are empty, or the JSON is technically valid but semantically broken. This catches those.
@@ -26,7 +24,7 @@ For a scenario JSON file it runs two passes and then scores the result:
 ## Install
 
 ```bash
-pip install ai-agent-scenario-qc
+pip install git+https://github.com/LaelaZorana/ai-agent-scenario-qc.git
 ```
 
 That gives you the `qc_reviewer` Python package and the `scenario-qc` command-line tool. The default schema and rubric ship inside the package, so it works straight out of the box. The only runtime dependency is `jsonschema`.
@@ -99,7 +97,7 @@ A CRITICAL defect can arguably force a FAIL verdict regardless of the weighted s
 ## Public API
 
 | Import | What it does |
-| --- | --- |
+|-|-|
 | `load_scenario(path)` | Load a scenario JSON file. Raises `ValueError` on invalid JSON. |
 | `load_schema()` | Return the bundled scenario JSON schema. |
 | `validate_structure(scenario)` | Structural defects from schema validation (empty if valid). |
@@ -148,6 +146,5 @@ app.py                 the Gradio demo that runs on Hugging Face Spaces
 
 MIT. See [LICENSE](LICENSE).
 
----
 
 **Links:** [GitHub](https://github.com/LaelaZorana) · [Hugging Face](https://huggingface.co/LaelaZ) · [Kaggle](https://www.kaggle.com/laelazorana)
